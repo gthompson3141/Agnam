@@ -1,10 +1,11 @@
 from django.urls import path
-from .views import AgnamView, CreateAgnamView
+from .views import ComicView, CreateComicView, UserView
 
 urlpatterns = [
-    path('comics/', AgnamView.get_comics, name="comics"),
-    path('comics/<str:pk>', AgnamView.get_comic, name="comic"),
-    path('comics/create/', CreateAgnamView.post_comic),
+    path('comics/', ComicView.get_comics),
+    path('comics/<str:pk>', ComicView.get_comic),
+    path('comics/create/', CreateComicView.post_comic),
+    path('user/verifyLogin/', UserView.verifyLogin),
     #path('scraped_data/', CreateAgnamView.scrape_data, name='scraped_data'),
     #path('csrf/', csrf_function),
 ]

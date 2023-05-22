@@ -1,8 +1,13 @@
 from django.contrib import admin
-from .models import Agnam
+from .models.comic import Comic
+from .models.users import User
 
 # Register your models here.
-class AgnamAdmin(admin.ModelAdmin):
+class ComicAdmin(admin.ModelAdmin):
     list_display = ('Title', 'URL', 'Poster')
 
-admin.site.register(Agnam, AgnamAdmin)
+class UserFields(admin.ModelAdmin):
+    list_display = ('user_id', 'fullName', 'email', 'password')
+
+admin.site.register(Comic, ComicAdmin)
+admin.site.register(User, UserFields)

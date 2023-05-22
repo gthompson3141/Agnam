@@ -1,0 +1,76 @@
+.modalBackgroundUrl{
+    background-color: #141414;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    opacity: 95%;
+}
+
+.modalContainerUrl{
+    width: auto;
+    height: auto;
+    background-color: #383838;
+    border-style: solid;
+    border-color: #383838;
+    border-radius: 10px;
+}
+
+.col{
+    color: white;
+    font-size: x-large;
+    width: auto
+}
+
+a{
+    font-size: x-large;
+}
+
+.addUrl{
+    background-color:#383838;
+    border: none;
+    border-color: #383838;
+    color: white;
+    width: 400px;
+    margin-inline-start: 10px;
+}
+
+.addButton{
+    background-color: #383838;
+    color: white;
+    border: none;
+    margin-inline-start: 10px;
+}
+
+.dataSubmit{
+    background-color: #adabab;
+    color: white;
+    border: none;
+    width: auto;
+    margin-top: 20px;
+}
+
+.modalBackgroundData{
+    background-color: #141414;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    opacity: 95%;
+}
+
+.modalContainerData{
+    width: auto;
+    height: auto;
+    background-color: #383838;
+    border-style: solid;
+    border-color: #383838;
+    border-radius: 10px;
+}
+

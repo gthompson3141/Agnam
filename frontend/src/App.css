@@ -1,0 +1,95 @@
+body {
+  background: #141414;
+  color: #ffffff;
+}
+
+.comic-app>.row {
+  overflow-x: auto;
+  flex-wrap: nowrap;
+}
+
+.form-control {
+  background-color: darkgray;
+  border: grey;
+}
+
+::-webkit-scrollbar {
+  background-color: #000000;
+  height: 5px;
+  width: 0;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: grey;
+}
+
+.comic-app {
+  padding-inline-start: 50px;
+  padding-inline-end: 50px;
+}
+
+.image-container {
+  position: relative;
+  transition: transform 0.5s;
+  width: 207px;
+}
+
+.image-container:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.image-container:hover .overlay {
+  opacity: 1;
+}
+
+.image-container:hover .overlay2 {
+  opacity: 0;
+}
+
+.overlay {
+  position: absolute;
+  background: rgba(0, 0, 0, 0);
+  width: 100%;
+  transition: 0.5s ease;
+  opacity: 0;
+  bottom: 0;
+  font-size: 20px;
+  padding: 20px;
+  text-align: center;
+}
+
+.overlay2 {
+  position: absolute;
+  background: rgba(0, 0, 0, 0);
+  width: 100%;
+  transition: 0.5s ease;
+  opacity: 1;
+  top: 0;
+  font-size: 20px;
+  padding: 20px;
+  text-align: center;
+}
+
+.btn {
+  width: 200px;
+  height: 280px;
+  font-size: xxx-large;
+  background-color: rgb(72, 71, 71);
+  color: rgb(150, 150, 150);
+  border: none;
+}
+
+.btn:hover {
+  font-size: xxx-large;
+  background-color: rgb(105, 105, 105);
+  border: none;
+}
+
+.btn:active:after {
+  background-color: rgb(59, 59, 59);
+}
+
+.comic-title {
+  color: white;
+}

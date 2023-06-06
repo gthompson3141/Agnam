@@ -128,7 +128,8 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000'
+    'http://localhost:3000',
+    'http://localhost:8000'
 ]
 
 # Base url to serve media files
@@ -141,3 +142,24 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 CSRF_TRUSTED_ORIGINS=['http://localhost:3000']
 
 CORS_ALLOW_HEADERS = '*'
+
+# Set the session engine
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+
+# Set the session cookie name
+SESSION_COOKIE_NAME = 'sessionid'
+
+# Set the session cookie age (in seconds)
+SESSION_COOKIE_AGE = 86400  # 24 hours
+
+# Set the session cookie secure flag (True if using HTTPS)
+SESSION_COOKIE_SECURE = False
+
+# Set the session cookie domain (optional)
+SESSION_COOKIE_DOMAIN = None
+
+# Set the session cookie path (optional)
+SESSION_COOKIE_PATH = '/'
+
+# Set the session cookie HTTP only flag (True to restrict access from JavaScript)
+SESSION_COOKIE_HTTPONLY = True

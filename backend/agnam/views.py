@@ -5,10 +5,10 @@ from .serializers import ComicSerializer, CreateComicSerializer, UserSerializer
 from .models.comic import Comic
 from .models.users import User
 from rest_framework.decorators import api_view
-from rest_framework.decorators import action
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from .scraper import scrape_data
+from django.contrib.auth.hashers import make_password
 
 # Create your views here.
 
@@ -85,7 +85,7 @@ class UserView(viewsets.ModelViewSet):
     def get_serializer_class(self):
         return UserSerializer
     
-    def set_pwd(self, plainPWD):
+    def set_pwd(plainPWD):
         return make_password(
             plainPWD, salt="7henRK5NTDyrT7NpEWv6Zg==", hasher="pbkdf2_sha1"
         )
@@ -98,25 +98,23 @@ class UserView(viewsets.ModelViewSet):
             providedEmail = request.data.get('email')
             providedPwd = request.data.get('password')
 
-            # Check if provided data existing in DB
+            # Check if provided data exists in DB
             _user = User.objects.filter(email=providedEmail).first()
 
             if not _user:
-                return JsonResponse({"error": str(e)}, status=400)
+                return JsonResponse({"error": "Invalid email"}, status=400)
             else:
                 _serialized_user = UserSerializer(_user)
                 result = dict()  # format the result container to dictionary
-                result[
-                    "data"
-                ] = _serialized_user.data  # assign data into the container
+                result["data"] = _serialized_user.data  # assign data into the container
                 if result["data"]["email"] == providedEmail:
-                    if result["data"]["password"] == self.set_pwd(providedPwd):
-                        return JsonResponse({"message": "Login successful"})
+                    if result["data"]["password"] == UserView.set_pwd(providedPwd):
+                        return JsonResponse({"message": "Login successful"}, status=200)
                     else:
-                        return JsonResponse({"error": str(e)}, status=400)
-    
+                        return JsonResponse({"error": "Invalid password"}, status=400)
+
         except Exception as e:
-            return JsonResponse({'success': False})
+            return JsonResponse({'error': str(e)}, status=500)
 
     # @csrf_exempt
     # @api_view(['POST'])

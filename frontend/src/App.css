@@ -8,7 +8,7 @@ body {
   flex-wrap: nowrap;
 }
 
-.form-control {
+#searchBar {
   background-color: darkgray;
   border: grey;
 }
@@ -71,7 +71,7 @@ body {
   text-align: center;
 }
 
-.btn {
+#addComicBtn {
   width: 200px;
   height: 280px;
   font-size: xxx-large;
@@ -80,16 +80,27 @@ body {
   border: none;
 }
 
-.btn:hover {
+#addComicBtn:hover {
   font-size: xxx-large;
   background-color: rgb(105, 105, 105);
   border: none;
 }
 
-.btn:active:after {
+#addComicBtn:active:after {
   background-color: rgb(59, 59, 59);
 }
 
 .comic-title {
   color: white;
 }
+
+/* .login-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  border: 1px solid #ccc;
+  padding: 20px;
+  box-sizing: border-box;
+} */

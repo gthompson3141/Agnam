@@ -18,12 +18,11 @@ const AppWrapper = () => {
     setIsLoggedIn(true);
   };
 
-  return (
-    <>
-      {!isLoggedIn && <Login onLogin={handleLogin} />}
-      {isLoggedIn && <App />}
-    </>
-  );
+  if (!isLoggedIn) {
+    return <Login onLogin={handleLogin} />;
+  }
+
+  return <App />;
 };
 
 const App = () => {
@@ -93,6 +92,7 @@ const App = () => {
         <div className='row ms-0 me-0'>
           {/* Button for adding a new comic */}
           <button
+            id='addComicBtn'
             className='btn btn-dark mt-4 mb-4 me-4'
             onClick={() => {
               setOpenModalUrl(true);

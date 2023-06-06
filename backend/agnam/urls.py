@@ -8,4 +8,5 @@ urlpatterns = [
     path('user/verifyLogin/', UserView.verifyLogin),
     #path('scraped_data/', CreateAgnamView.scrape_data, name='scraped_data'),
     #path('csrf/', csrf_function),
+    #why does this happen
 ]

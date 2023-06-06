@@ -12,6 +12,7 @@ const SearchBox = (props) => {
     return (
         <div className='col-sm-3'>
             <input
+                id='searchBar'
                 className='form-control'
                 value={props.value}
                 onKeyDown={handleKeyDown}

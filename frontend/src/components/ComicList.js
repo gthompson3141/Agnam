@@ -10,7 +10,7 @@ const ComicList = (props) => {
                 <div className='image-container d-flex justify-content-start mt-4 mb-4 me-4'>
                     <div>
                         <a href={comic.URL}>
-                            <img src={comic.Poster} alt='comic' />
+                            <img className='comic-img' src={comic.Poster} alt='comic' />
                         </a>
                     </div>
                     <div className='overlay2 d-flex align-items-center justify-content-center'>

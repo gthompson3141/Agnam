@@ -9,13 +9,27 @@ import RemoveFavourites from './components/RemoveFavourites';
 import ModalUrl from './components/ModalUrl';
 import axios from 'axios';
 import Login from './components/Login';
+import Logout from './components/Logout';
 
 const AppWrapper = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const storedToken = localStorage.getItem('authToken');
+
+  useEffect(() => {
+    if (storedToken){
+      setIsLoggedIn(true);
+    }
+  }, []);
 
   // Function to handle successful login
-  const handleLogin = () => {
+  const handleLogin = (token) => {
     setIsLoggedIn(true);
+    localStorage.setItem('authToken', token);
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    localStorage.removeItem('authToken');
   };
 
   if (!isLoggedIn) {
@@ -88,6 +102,7 @@ const App = () => {
         <div className='row d-flex align-items-center mt-5 mb-2'>
           <ComicListHeading heading='Home' />
           <SearchBox setSearchValue={setSearchValue} />
+          <Logout handleLogout={handleLogout}/>
         </div>
         <div className='row ms-0 me-0'>
           {/* Button for adding a new comic */}

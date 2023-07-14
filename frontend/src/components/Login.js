@@ -14,7 +14,8 @@ const handleLogin = (e) => {
     .then((response) => {
       console.log(response.data);
       if (response.data.message === 'Login successful') {
-        onLogin();
+        const token = email;
+        onLogin(token);
       } else {
         console.log('Invalid login');
       }

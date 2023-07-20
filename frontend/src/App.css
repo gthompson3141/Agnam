@@ -3,7 +3,7 @@ body {
   color: #ffffff;
 }
 
-.comic-app>.row {
+.comic-app>.row{
   overflow-x: auto;
   flex-wrap: nowrap;
 }
@@ -24,6 +24,11 @@ body {
 }
 
 .comic-app {
+  padding-inline-start: 50px;
+  padding-inline-end: 50px;
+}
+
+.app-header{
   padding-inline-start: 50px;
   padding-inline-end: 50px;
 }

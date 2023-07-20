@@ -11,49 +11,46 @@ import axios from 'axios';
 import Login from './components/Login';
 import Logout from './components/Logout';
 
-const AppWrapper = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const storedToken = localStorage.getItem('authToken');
-
-  useEffect(() => {
-    if (storedToken){
-      setIsLoggedIn(true);
-    }
-  }, []);
-
-  // Function to handle successful login
-  const handleLogin = (token) => {
-    setIsLoggedIn(true);
-    localStorage.setItem('authToken', token);
-  };
-
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-    localStorage.removeItem('authToken');
-  };
-
-  if (!isLoggedIn) {
-    return <Login onLogin={handleLogin} />;
-  }
-
-  return <App />;
-};
-
 const App = () => {
   const [comics, setComics] = useState([]);
   const [favourites, setFavourites] = useState([]);
   const [searchValue, setSearchValue] = useState('');
   const [openModalUrl, setOpenModalUrl] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const storedToken = localStorage.getItem('authToken');
+    if (storedToken){
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+    }
+  }, []);
+
+  // Function to handle successful login
+  const handleLogin = (token) => {
+    localStorage.setItem('authToken', token);
+    setIsLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('authToken');
+    setIsLoggedIn(false);
+  };
 
   useEffect(() => {
     if (searchValue !== '') {
       // Send request to database to return comics where title matches search value
       const searchComic = async () => {
-        let dataList = [];
-        const { data } = await axios.get('/comics/' + searchValue);
-        dataList.push(data);
-        console.log(dataList);
-        setComics(dataList);
+        try{
+          let dataList = [];
+          const { data } = await axios.get('/comics/' + searchValue);
+          dataList.push(data);
+          console.log(dataList);
+          setComics(dataList);
+        }catch{
+          console.log('No Match');
+        }
       };
 
       searchComic();
@@ -95,15 +92,33 @@ const App = () => {
     saveToLocalStorage(newFavouriteList);
   };
 
+  if (!isLoggedIn) {
+    return <Login onLogin={handleLogin} />;
+  }
+
   return (
     <div className='app'>
       {openModalUrl && <ModalUrl setOpenModalUrl={setOpenModalUrl} />}
-      <div className='container-fluid comic-app'>
-        <div className='row d-flex align-items-center mt-5 mb-2'>
-          <ComicListHeading heading='Home' />
-          <SearchBox setSearchValue={setSearchValue} />
-          <Logout handleLogout={handleLogout}/>
+      <div className='app-header'>
+        <div className='container-fluid'>
+          <div className='row d-flex align-items-center justify-content-between'>
+            <div className='col mt-5 mb-2'>
+              <ComicListHeading heading='Home' />
+            </div>
+            <div className='col-auto mt-5 mb-2'> {/* Use col-auto class to adjust width automatically */}
+              <div className='row align-items-center'>
+                <div className='col-auto'> {/* Use col-auto class to adjust width automatically */}
+                  <SearchBox setSearchValue={setSearchValue} />
+                </div>
+                <div className='col-auto'> {/* Use col-auto class to adjust width automatically */}
+                  <Logout handleLogout={handleLogout} />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+      <div className='container-fluid comic-app'>
         <div className='row ms-0 me-0'>
           {/* Button for adding a new comic */}
           <button
@@ -138,7 +153,7 @@ const App = () => {
   );
 };
 
-export default AppWrapper;
+export default App;
 
 
 {/* <div className='row d-flex align-items-center mt-5 mb-4'>

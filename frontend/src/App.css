@@ -1,6 +1,7 @@
 body {
   background: #141414;
   color: #ffffff;
+  margin: 0;
 }
 
 .comic-app>.row{
@@ -102,7 +103,16 @@ body {
 .comic-title {
   color: white;
 }
+ 
+.verticle-line{
+  background-color: white;
+  width: 3px;
+  height: 50px;
+}
 
+.pageTite{
+  background-color: white;
+}
 /* .login-container{
   display: flex;
   flex-direction: column;

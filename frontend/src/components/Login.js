@@ -72,17 +72,3 @@ const Login = ({ onLogin }) => {
 };
 
 export default Login;
-
-{/* 
-<label>
-          Username:
-          <input className="form-control" type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
-        </label>
-        <br />
-        <label>
-          Password:
-          <input className="form-control" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        </label>
-        <br />
-        <button type="submit">Login</button>
-*/}

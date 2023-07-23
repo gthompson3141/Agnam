@@ -111,6 +111,8 @@ class UserView(viewsets.ModelViewSet):
                     if result["data"]["password"] == UserView.set_pwd(providedPwd):
                         return JsonResponse({"message": "Login successful"}, status=200)
                     else:
+                        print(result['data']['password'])
+                        print(UserView.set_pwd(providedPwd))
                         return JsonResponse({"error": "Invalid password"}, status=400)
 
         except Exception as e:

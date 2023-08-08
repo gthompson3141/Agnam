@@ -1,9 +1,10 @@
 body {
   background: #141414;
   color: #ffffff;
+  margin: 0;
 }
 
-.comic-app>.row {
+.comic-app>.row{
   overflow-x: auto;
   flex-wrap: nowrap;
 }
@@ -28,10 +29,19 @@ body {
   padding-inline-end: 50px;
 }
 
+.app-header{
+  padding-inline-start: 50px;
+  padding-inline-end: 50px;
+}
+
 .image-container {
   position: relative;
   transition: transform 0.5s;
   width: 207px;
+}
+
+.image-container:hover .comic-img{
+  filter: brightness(50%);
 }
 
 .image-container:hover {
@@ -44,7 +54,7 @@ body {
 }
 
 .image-container:hover .overlay2 {
-  opacity: 0;
+  opacity: 1;
 }
 
 .overlay {
@@ -64,7 +74,7 @@ body {
   background: rgba(0, 0, 0, 0);
   width: 100%;
   transition: 0.5s ease;
-  opacity: 1;
+  opacity: 0;
   top: 0;
   font-size: 20px;
   padding: 20px;
@@ -82,7 +92,7 @@ body {
 
 #addComicBtn:hover {
   font-size: xxx-large;
-  background-color: rgb(105, 105, 105);
+  background-color: #696969;
   border: none;
 }
 
@@ -93,14 +103,49 @@ body {
 .comic-title {
   color: white;
 }
+ 
+.verticle-line{
+  background-color: white;
+  width: 3px;
+  height: 40px;
+}
 
-/* .login-container{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  border: 1px solid #ccc;
-  padding: 20px;
-  box-sizing: border-box;
-} */
+.pageTite{
+  background-color: white;
+}
+
+.custom-dropdown {
+  position: relative;
+}
+
+.custom-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 120%;
+  right: 0%;
+  background-color: rgb(72, 71, 71);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 5px;
+  border-radius: 8px;
+}
+
+.custom-dropdown.show .custom-dropdown-menu {
+  display: block;
+}
+
+.custom-dropdown-item {
+  display: block;
+  width: 100%;
+  font-size: 20px;
+  padding: 8px 10px;
+  border: none;
+  background-color: transparent;
+  color: #bfbfbf;
+  cursor: pointer;
+}
+
+.custom-dropdown-item:hover {
+  color: #f1f1f1;
+  outline-width: 10%;
+  outline-color: #f1f1f1;
+}

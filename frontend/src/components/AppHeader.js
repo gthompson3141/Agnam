@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Login from './Login';
 import { Link } from 'react-router-dom';
 import profile from '/home/georget/Code/Agnam/frontend/src/assets/profile-image.png';
 import { useAuth } from '../api/AuthContext';
 import SearchBox from './SearchBox';
 import '../App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 const AppHeader = ({ pageTitle }) => {
   
@@ -15,10 +14,25 @@ const AppHeader = ({ pageTitle }) => {
     textDecoration: 'none',
     color: 'inherit',
   }
+  const dropdownRef = useRef(null);
 
   const handleProfile = () => {
-    setIsDropdownOpen(true);
+    setIsDropdownOpen(!isDropdownOpen);
   };
+
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setIsDropdownOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
   
   return (
     <div className='row d-flex align-items-center mt-4'>
@@ -47,11 +61,11 @@ const AppHeader = ({ pageTitle }) => {
           <div className='col-auto'>
             {pageTitle && <SearchBox />}
           </div>
-          <div className='col-auto'>
+          <div className='col-auto' ref={dropdownRef}>
             {isLoggedIn ? (
               <> 
                 {/* Profile image dropdown */}
-                <div className='dropdown'>
+                <div className={`custom-dropdown${isDropdownOpen ? ' show' : ''}`}>
                   <img
                     src={profile}
                     width={40}
@@ -61,12 +75,14 @@ const AppHeader = ({ pageTitle }) => {
                     style={{ cursor: 'pointer' }}
                   />
                   {isDropdownOpen && (
-                    <div className='dropdown-menu'>
+                    <div className='custom-dropdown-menu'>
                       {/* Dropdown Content */}
-                      <button className='dropdown-item'>Profile</button>
-                      <button className='dropdown-item'>Settings</button>
+                      <Link to='/profile' style={{ ...linkStyle }}>
+                        <button className='custom-dropdown-item'>Profile</button>
+                      </Link>
+                      <button className='custom-dropdown-item'>Settings</button>
                       <button 
-                        className='dropdown-item'
+                        className='custom-dropdown-item'
                         onClick={() => handleLogout()}
                       >
                         Logout

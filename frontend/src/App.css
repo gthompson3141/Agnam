@@ -92,7 +92,7 @@ body {
 
 #addComicBtn:hover {
   font-size: xxx-large;
-  background-color: rgb(105, 105, 105);
+  background-color: #696969;
   border: none;
 }
 
@@ -107,19 +107,45 @@ body {
 .verticle-line{
   background-color: white;
   width: 3px;
-  height: 50px;
+  height: 40px;
 }
 
 .pageTite{
   background-color: white;
 }
-/* .login-container{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  border: 1px solid #ccc;
-  padding: 20px;
-  box-sizing: border-box;
-} */
+
+.custom-dropdown {
+  position: relative;
+}
+
+.custom-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 120%;
+  right: 0%;
+  background-color: rgb(72, 71, 71);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 5px;
+  border-radius: 8px;
+}
+
+.custom-dropdown.show .custom-dropdown-menu {
+  display: block;
+}
+
+.custom-dropdown-item {
+  display: block;
+  width: 100%;
+  font-size: 20px;
+  padding: 8px 10px;
+  border: none;
+  background-color: transparent;
+  color: #bfbfbf;
+  cursor: pointer;
+}
+
+.custom-dropdown-item:hover {
+  color: #f1f1f1;
+  outline-width: 10%;
+  outline-color: #f1f1f1;
+}

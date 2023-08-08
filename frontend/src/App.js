@@ -3,6 +3,7 @@ import HomePage from './pages/HomePage';
 import MangaPage from './pages/MangaPage';
 import NovelPage from './pages/NovelPage';
 import AnimePage from './pages/AnimePage';
+import ProfilePage from './pages/ProfilePage';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/manga" element={<MangaPage />} />
         <Route path="/novel" element={<NovelPage />} />
         <Route path="/anime" element={<AnimePage />} />
+        <Route path="/profile" element={<ProfilePage />} />
       </Routes>
     </Router>
   );
